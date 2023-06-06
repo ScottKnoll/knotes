@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('notes', function (Blueprint $table) {
             $table->id();
+            $table->date('date');
+            $table->string('title')->nullable();
+            $table->text('message')->nullable();
             $table->timestamps();
         });
     }

@@ -12,13 +12,13 @@ class NoteController extends Controller
         $notes = Note::all();
 
         return view('notes.index', [
-            'note' => $notes,
+            'notes' => $notes,
         ]);
     }
 
     public function create()
     {
-        //
+        return view('notes.create');
     }
 
     public function store(Request $request)
