@@ -20,7 +20,7 @@
                             {{-- <a href="/notes/{{ $notes->id }}" class="block hover:bg-gray-50"> --}}
                                 <div class="flex items-center px-4 py-4 sm:px-6">
                                     <div class="min-w-0 flex-1 sm:flex sm:items-center sm:justify-between">
-                                        <p>{{ $notes->title . ' - ' . $notes->date->toDayDateTimeString() }}</p>
+                                        <p>{{ $note->title . ' - ' . $note->date->toDayDateTimeString() }}</p>
                                     </div>
                                     <div class="ml-5 flex-shrink-0">
                                         <svg class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -33,9 +33,6 @@
                     </ul>
                 </div>
             @endforeach
-            <div class="mt-4">
-            {{-- {{  $notes->links() }} --}}
-            </div>
         </div>
     </x-container>
 </x-app-layout>

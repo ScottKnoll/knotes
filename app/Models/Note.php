@@ -9,6 +9,10 @@ class Note extends Model
 {
     use HasFactory;
 
+    protected $casts = [
+        'date' => 'datetime',
+    ];
+
     protected $fillable = [
         'date',
         'title',
