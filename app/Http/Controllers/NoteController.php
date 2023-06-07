@@ -21,13 +21,17 @@ class NoteController extends Controller
         return view('notes.create');
     }
 
-    public function store(Request $request)
+    public function store()
     {
         $validated = request()->validate([
             'date' => 'nullable',
             'title' => 'nullable',
             'message' => 'required',
         ]);
+
+        Note::create($validated);
+
+        return redirect('/notes');
     }
 
     public function show(Note $note)
@@ -37,7 +41,9 @@ class NoteController extends Controller
 
     public function edit(Note $note)
     {
-        //
+        return view('notes.edit', [
+            'note' => $note,
+        ]);
     }
 
     public function update(Note $note)

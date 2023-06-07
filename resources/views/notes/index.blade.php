@@ -17,7 +17,7 @@
                 <div class="overflow-hidden bg-white shadow sm:rounded-md">
                     <ul role="list" class="divide-y divide-gray-200">
                         <li>
-                            {{-- <a href="/notes/{{ $notes->id }}" class="block hover:bg-gray-50"> --}}
+                            <a href="/notes/{{ $note->id }}" class="block hover:bg-gray-50">
                                 <div class="flex items-center px-4 py-4 sm:px-6">
                                     <div class="min-w-0 flex-1 sm:flex sm:items-center sm:justify-between">
                                         <p>{{ $note->title . ' - ' . $note->date->toDayDateTimeString() }}</p>
