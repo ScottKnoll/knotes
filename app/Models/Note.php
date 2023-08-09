@@ -19,4 +19,19 @@ class Note extends Model
         'title',
         'message',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function notebook()
+    {
+        return $this->belongsToMany(Notebook::class);
+    }
+
+    public function tasks()
+    {
+        return $this->hasMany(Task::class);
+    }
 }
