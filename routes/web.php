@@ -23,6 +23,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+
 Route::resource('notes', NoteController::class);
 
 Route::middleware('auth')->group(function () {

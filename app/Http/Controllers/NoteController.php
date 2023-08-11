@@ -29,6 +29,8 @@ class NoteController extends Controller
             'message' => 'required',
         ]);
 
+        $validated['user_id'] = auth()->id();
+
         Note::create($validated);
 
         return redirect('/notes');
