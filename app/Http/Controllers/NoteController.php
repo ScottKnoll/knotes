@@ -38,7 +38,11 @@ class NoteController extends Controller
 
     public function show(Note $note)
     {
-        //
+        Note::all();
+
+        return view('notes.show', [
+            'note' => $note
+        ]);
     }
 
     public function edit(Note $note)
@@ -48,14 +52,19 @@ class NoteController extends Controller
         ]);
     }
 
-    public function update(Note $note)
+    public function update(Request $request, Note $note) 
     {
         $validated = request()->validate([
             'date' => 'nullable',
             'title' => 'nullable',
             'message' => 'required',
         ]);
+    
+        $note->update($validated);
+
+        return redirect('/notes/' . $note->id);
     }
+    
 
     public function destroy(Note $note)
     {
