@@ -4,6 +4,11 @@
             <h2 class="leading-tight text-gray-600">
                 Last edited on {{ $note->updated_at->format('M d, Y') }}
             </h2>
+            <div class="inline-flex rounded-md shadow-sm isolate">
+                <x-button href="/notes/{{ $note->id }}" styles="indigo" class="rounded-md hover:bg-indigo-500">
+                    View Note
+                </x-button>
+            </div>
         </div>
     </x-slot>
     <x-container>
