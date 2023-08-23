@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Fonts -->
@@ -15,9 +16,9 @@
     <!-- Scripts -->
     {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
     <script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
-    <script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script>
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
     <script src="//unpkg.com/alpinejs" defer></script>
+    <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 </head>
 
 <body class="h-full font-sans antialiased">
@@ -42,15 +43,13 @@
         </main>
     </div>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var quill = new Quill('#editor', {
-                theme: 'snow'
-            });
+        var options = {
+            theme: 'snow',
+            readOnly: false
+        };
 
-            document.querySelector('form').addEventListener('submit', function() {
-                var content = quill.root.innerHTML;
-                document.querySelector('#hiddenArea').value = content;
-            });
+        document.addEventListener('DOMContentLoaded', function() {
+            var quill = new Quill('#editor', options);
         });
     </script>
 </body>

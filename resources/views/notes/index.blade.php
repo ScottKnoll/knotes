@@ -35,4 +35,7 @@
             @endforeach
         </div>
     </x-container>
+    <div class="mt-4">
+        {{ $notes->links() }}
+    </div>
 </x-app-layout>
