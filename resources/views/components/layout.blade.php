@@ -5,23 +5,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
-
     <title>{{ config('app.name', 'Laravel') }}</title>
-
-    <!-- Fonts -->
-    {{-- <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" /> --}}
-
-    <!-- Scripts -->
-    {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
-    <script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
-    <script src="//unpkg.com/alpinejs" defer></script>
-    <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <!-- Styles -->
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <script src="//unpkg.com/alpinejs"></script>
 </head>
 
 <body class="h-full font-sans antialiased">
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
     <div class="min-h-full">
         <div class="bg-gradient-to-t from-indigo-800 to-indigo-900 to-80% pb-32">
             @auth
@@ -43,13 +34,17 @@
         </main>
     </div>
     <script>
-        var options = {
-            theme: 'snow',
-            readOnly: false
-        };
-
         document.addEventListener('DOMContentLoaded', function() {
+            var options = {
+                theme: 'snow'
+            };
             var quill = new Quill('#editor', options);
+
+            // Listen for form submission
+            document.querySelector('form').addEventListener('submit', function() {
+                var content = quill.root.innerHTML;
+                document.getElementById('hiddenArea').value = content;
+            });
         });
     </script>
 </body>
