@@ -20,4 +20,17 @@ class NotebookController extends Controller
     {
         return view('notebooks.create');
     }
+
+    public function store()
+    {
+        $validated = request()->validate([
+            'name' => 'nullable|string|max:255',
+        ]);
+
+        $validated['user_id'] = auth()->id();
+
+        Notebook::create($validated);
+
+        return redirect('/notes');
+    }
 }
