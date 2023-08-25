@@ -5,7 +5,7 @@
                 Notebooks
             </h2>
             <div class="inline-flex rounded-md shadow-sm isolate">
-                <x-button href="/notes/create" styles="indigo">
+                <x-button href="/notebooks/create" styles="indigo">
                     Create Notebook
                 </x-button>
             </div>

@@ -15,4 +15,9 @@ class NotebookController extends Controller
             'notebooks' => $notebooks,
         ]);
     }
+
+    public function create()
+    {
+        return view('notebooks.create');
+    }
 }
