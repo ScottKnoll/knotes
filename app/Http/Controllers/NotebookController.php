@@ -31,6 +31,6 @@ class NotebookController extends Controller
 
         Notebook::create($validated);
 
-        return redirect('/notes');
+        return redirect('/notebooks');
     }
 }

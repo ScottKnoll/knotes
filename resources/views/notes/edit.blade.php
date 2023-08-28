@@ -21,15 +21,12 @@
                     <x-input type="text" name="title" value="{{ $note->title }}" class="!text-xl !font-bold" />
                 </div>
                 <div class="mt-2">
-                    <div id="editor" style="height: 400px;">
-                        {!! $note->message !!}
+                    <textarea rows="29" name="comment" id="comment"
+                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">{{ $note->message }}</textarea>
+                    <div class="flex justify-end mt-4 gap-x-4">
+                        <x-button href="/notes">Cancel</x-button>
+                        <x-button type="submit" styles="indigo">Update</x-button>
                     </div>
-                    <input type="hidden" name="message" id="hiddenArea">
-                </div>
-                <div class="flex justify-end mt-4 gap-x-4">
-                    <x-button href="/notes">Cancel</x-button>
-                    <x-button type="submit" styles="indigo">Update</x-button>
-                </div>
             </form>
         </div>
     </x-container>

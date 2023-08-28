@@ -17,16 +17,15 @@
                     </div>
                     <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
                 </div>
+                <div class="sm:pt-5">
+                    <div class="flex justify-end gap-x-3">
+                        <x-button href="/notebooks" class="rounded-md hover:bg-gray-50">
+                            Cancel
+                        </x-button>
+                        <x-button type="submit" styles="indigo">
+                            Create</x-button>
+                    </div>
+                </div>
             </form>
-        </div>
-        <div class="sm:pt-5">
-            <div class="flex justify-end gap-x-3">
-                <x-button href="/notebooks" class="rounded-md hover:bg-gray-50">
-                    Cancel
-                </x-button>
-                <x-button type="submit" styles="indigo">
-                    Create</x-button>
-            </div>
-        </div>
     </x-container>
 </x-app-layout>
