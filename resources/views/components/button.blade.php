@@ -23,7 +23,7 @@
             $btnClasses = 'bg-white border border-gray-200 dark:bg-black dark:border-gray-800 dark:hover:bg-gray-900 dark:ring-offset-black dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 hover:bg-gray-50 inline-flex items-center text-gray-700';
             break;
     }
-    
+
     switch ($size) {
         case 'xs':
             $btnClasses .= ' rounded-sm px-1.5 py-0.5 text-sm';
@@ -53,8 +53,7 @@
                 event.preventDefault();
             }
         }
-    }" @click="confirm"
-        type="{{ isset($type) ? $type : 'submit' }}">
+    }" @click="confirm" type="{{ isset($type) ? $type : 'submit' }}">
         {{ $slot }}
     </button>
 @else

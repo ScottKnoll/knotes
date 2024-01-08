@@ -1,17 +1,15 @@
 @props([
     'method' => 'POST',
-    'action' => ''
+    'action' => '',
 ])
 
-<form method="{{ $method === 'GET' ? 'GET' : 'POST' }}"
-    action="{{ $action }}"
->
+<form method="{{ $method === 'GET' ? 'GET' : 'POST' }}" action="{{ $action }}">
     @csrf
 
-    @if (! in_array($method, ['GET', 'POST']))
+    @if (!in_array($method, ['GET', 'POST']))
         @method($method)
     @endif
 
 </form>
 
-    {{ $slot }}
+{{ $slot }}

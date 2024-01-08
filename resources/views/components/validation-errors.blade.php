@@ -4,8 +4,7 @@
     <div x-data="{ show: true }" x-show="show" class="p-4 mb-4 rounded-md bg-red-50">
         <div class="flex">
             <div class="flex-shrink-0">
-                <button type="button" x-on:click="show = false"
-                    class="text-red-400 hover:text-red-500 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2">
+                <button type="button" x-on:click="show = false" class="text-red-400 hover:text-red-500 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2">
                     <x-svg.x-circle class="w-5 h-5 text-red-400" />
                 </button>
             </div>

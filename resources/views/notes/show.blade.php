@@ -4,33 +4,24 @@
             <h2 class="text-xl font-semibold leading-tight text-gray-800">
                 Notes
             </h2>
-            <!-- Dropdown for Edit and Delete -->
             <div class="relative inline-block text-left" x-data="{ open: false }">
                 <div>
-                    <button @click="open = !open" type="button"
-                        class="inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-gray-700 bg-white rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
-                        id="options-menu" aria-haspopup="true" :aria-expanded="open">
+                    <button @click="open = !open" type="button" class="inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-gray-700 bg-white rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100" id="options-menu" aria-haspopup="true" :aria-expanded="open">
                         <x-svg.ellipsis-vertical class="w-5 h-5" />
                     </button>
                 </div>
 
-                <div x-show="open" @click.away="open = false"
-                    class="absolute right-0 w-24 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5">
-                    <div class="py-1 text-center" role="menu" aria-orientation="vertical"
-                        aria-labelledby="options-menu">
-                        <a href="/notes/{{ $note->id }}/edit"
-                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                            role="menuitem">
+                <div x-show="open" @click.away="open = false" class="absolute right-0 w-24 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5">
+                    <div class="py-1 text-center" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+                        <a href="/notes/{{ $note->id }}/edit" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">
                             Edit
                         </a>
-                        <a href="/notes/{{ $note->id }}/delete"
-                            class="block px-4 py-2 text-sm text-red-700 hover:bg-gray-100" role="menuitem">
+                        <a href="/notes/{{ $note->id }}/delete" class="block px-4 py-2 text-sm text-red-700 hover:bg-gray-100" role="menuitem">
                             Delete
                         </a>
                     </div>
                 </div>
             </div>
-            <!-- End Dropdown -->
         </div>
     </x-slot>
     <x-card>
