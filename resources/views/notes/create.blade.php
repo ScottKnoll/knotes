@@ -12,16 +12,11 @@
             <form action="/notes" method="post">
                 @csrf
                 <div class="pb-2 border-b border-gray-200">
-                    <x-input type="text" name="title" value="{{ old('title') }}" class="!text-xl !font-bold"
-                        placeholder="Title" />
+                    <x-input type="text" name="title" value="{{ old('title') }}" class="!text-xl !font-bold" placeholder="Title" />
                 </div>
                 <div class="mt-2">
-                    <textarea rows="29" name="comment" id="comment"
-                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                        placeholder="Start writing">{{ old('comment') }}</textarea>
-                    <div class="flex justify-end mt-4 gap-x-4">
-                    </div>
-                    <input type="hidden" name="comment" id="hiddenArea">
+                    <x-textarea rows="29" name="message" id="message" placeholder="Start writing">{{ old('message') }}
+                    </x-textarea>
                 </div>
                 <div class="flex justify-end mt-4 gap-x-4">
                     <x-button href="/notes">Cancel</x-button>

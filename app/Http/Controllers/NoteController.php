@@ -30,6 +30,7 @@ class NoteController extends Controller
         ]);
 
         $validated['user_id'] = auth()->id();
+        $validated['date'] = now();
 
         Note::create($validated);
 
@@ -52,19 +53,19 @@ class NoteController extends Controller
         ]);
     }
 
-    public function update(Request $request, Note $note) 
+    public function update(Request $request, Note $note)
     {
         $validated = request()->validate([
             'date' => 'nullable',
             'title' => 'nullable',
             'message' => 'required',
         ]);
-    
+
         $note->update($validated);
 
         return redirect('/notes/' . $note->id);
     }
-    
+
 
     public function destroy(Note $note)
     {
@@ -72,5 +73,4 @@ class NoteController extends Controller
 
         return redirect('/notes');
     }
-    
 }

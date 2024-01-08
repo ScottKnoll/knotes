@@ -14,7 +14,7 @@
     <x-container>
         <div class="py-4 mx-auto">
             @foreach ($notes as $note)
-                <div class="overflow-hidden bg-white shadow sm:rounded-md">
+                <div class="mb-4 overflow-hidden bg-white shadow sm:rounded-md">
                     <ul role="list" class="divide-y divide-gray-200">
                         <li>
                             <a href="/notes/{{ $note->id }}/edit" class="block hover:bg-gray-50">
