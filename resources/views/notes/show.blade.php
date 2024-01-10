@@ -23,6 +23,22 @@
                 </div>
             </div>
         </div>
+        <div class="mt-4">
+            <form action="/notes{{ $note->id }}}/add-to-notebook" method="post">
+                @csrf
+                <x-label for="notebook_id">Add to Notebook:</x-label>
+                <div class="mt-1">
+                    <x-select id="notebook_id" name="notebook_id">
+                        @foreach ($notebooks as $notebook)
+                            <option value="{{ $notebook->id }}">{{ $notebook->name }}</option>
+                        @endforeach
+                    </x-select>
+                </div>
+                <div class="mt-4">
+                    <x-button type="submit">Add</x-button>
+                </div>
+            </form>
+        </div>
     </x-slot>
     <x-card>
         <div class="px-6 mx-auto max-w-7xl lg:px-8">

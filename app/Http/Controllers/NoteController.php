@@ -37,12 +37,15 @@ class NoteController extends Controller
         return redirect('/notes');
     }
 
-    public function show(Note $note)
+    public function show($id)
     {
-        Note::all();
+        $note = auth()->user()->notes()->findOrFail($id);
+
+        $notebooks = auth()->user()->notebooks;
 
         return view('notes.show', [
-            'note' => $note
+            'note' => $note,
+            'notebooks' => $notebooks,
         ]);
     }
 
