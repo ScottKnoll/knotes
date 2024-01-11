@@ -1,52 +1,33 @@
 <!DOCTYPE html>
-<html class="h-full bg-gray-100" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html class="h-full bg-white">
+
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <title>{{ config('app.name', 'Laravel') }}</title>
-    <!-- Styles -->
-    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-    <script src="//unpkg.com/alpinejs"></script>
+
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 </head>
 
-<body class="h-full font-sans antialiased">
-    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
-    <div class="min-h-full">
-        <div class="bg-gradient-to-t from-indigo-800 to-indigo-900 to-80% pb-32">
-            @auth
-                <x-nav />
-            @endauth
-            @if (isset($header))
-                <header class="py-10">
-                    <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-                        {{-- <h1 class="text-3xl font-bold tracking-tight text-white">Dashboard</h1> --}}
-                        {{ $header }}
-                    </div>
-                </header>
-            @endif
-        </div>
-        <main class="-mt-32">
-            <div class="px-4 pb-12 mx-auto max-w-7xl sm:px-6 lg:px-8">
+<body class="...">
+    <x-sidebar />
+    <x-sidebar-mobile />
+    <x-search-header />
+    <div class="lg:pl-72">
+        <main class="py-10">
+            <div class="px-4 sm:px-6 lg:px-8">
                 {{ $slot }}
             </div>
         </main>
     </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var options = {
-                theme: 'snow'
-            };
-            var quill = new Quill('#editor', options);
-
-            // Listen for form submission
-            document.querySelector('form').addEventListener('submit', function() {
-                var content = quill.root.innerHTML;
-                document.getElementById('hiddenArea').value = content;
-            });
-        });
-    </script>
 </body>
 
 </html>

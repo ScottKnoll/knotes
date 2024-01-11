@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-layout>
     <x-slot name="header">
         <div class="flex items-center justify-between">
             <h2 class="text-xl font-semibold leading-tight text-gray-800">
@@ -38,4 +38,4 @@
     <div class="mt-4">
         {{ $notes->links() }}
     </div>
-</x-app-layout>
+</x-layout>

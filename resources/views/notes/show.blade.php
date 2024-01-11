@@ -10,7 +10,6 @@
                         <x-svg.ellipsis-vertical class="w-5 h-5" />
                     </button>
                 </div>
-
                 <div x-show="open" @click.away="open = false" class="absolute right-0 w-24 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5">
                     <div class="py-1 text-center" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
                         <a href="/notes/{{ $note->id }}/edit" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">
@@ -23,25 +22,25 @@
                 </div>
             </div>
         </div>
-        <div class="mt-4">
-            <form action="/notes{{ $note->id }}}/add-to-notebook" method="post">
-                @csrf
-                <x-label for="notebook_id">Add to Notebook:</x-label>
-                <div class="mt-1">
-                    <x-select id="notebook_id" name="notebook_id">
-                        @foreach ($notebooks as $notebook)
-                            <option value="{{ $notebook->id }}">{{ $notebook->name }}</option>
-                        @endforeach
-                    </x-select>
-                </div>
-                <div class="mt-4">
-                    <x-button type="submit">Add</x-button>
-                </div>
-            </form>
-        </div>
     </x-slot>
     <x-card>
         <div class="px-6 mx-auto max-w-7xl lg:px-8">
+            <div class="max-w-md mb-4">
+                <form action="/notes{{ $note->id }}}/add-to-notebook" method="post">
+                    @csrf
+                    <div>
+                        <x-label for="notebook_id">Add to Notebook:</x-label>
+                        <div class="flex items-center justify-between mt-1 gap-x-2">
+                            <x-select id="notebook_id" name="notebook_id">
+                                @foreach ($notebooks as $notebook)
+                                    <option value="{{ $notebook->id }}">{{ $notebook->name }}</option>
+                                @endforeach
+                            </x-select>
+                            <x-button type="submit">Add</x-button>
+                        </div>
+                    </div>
+                </form>
+            </div>
             <div class="flex flex-col items-start justify-between">
                 <div class="flex items-center text-xs gap-x-4">
                     <time datetime="2020-03-16" class="text-gray-500">{{ $note->created_at->format('M d, Y') }}</time>
