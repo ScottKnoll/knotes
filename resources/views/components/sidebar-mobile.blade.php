@@ -1,5 +1,5 @@
-<div class="relative z-50 lg:hidden" role="dialog" aria-modal="true">
-    <div class="fixed inset-0 bg-gray-900/80"></div>
+<div x-show="sidebarOpen" class="fixed inset-0 z-40 lg:hidden" x-transition:enter="transition ease-in-out duration-300" x-transition:enter-start="opacity-0 transform -translate-x-full" x-transition:enter-end="opacity-100 transform translate-x-0" x-transition:leave="transition ease-in-out duration-300" x-transition:leave-start="opacity-100 transform translate-x-0" x-transition:leave-end="opacity-0 transform -translate-x-full">
+    <div @click="sidebarOpen = false" class="fixed inset-0 bg-gray-900 bg-opacity-75" aria-hidden="true"></div>
 
     <div class="fixed inset-0 flex">
         <!--
@@ -12,7 +12,7 @@
      From: "translate-x-0"
      To: "-translate-x-full"
    -->
-        <div class="relative flex flex-1 w-full max-w-xs mr-16">
+        <div class="relative flex flex-col flex-1 w-full max-w-xs bg-gray-50" x-transition:enter="transition ease-in-out duration-300 transform" x-transition:enter-start="-translate-x-full" x-transition:enter-end="translate-x-0" x-transition:leave="transition ease-in-out duration-300 transform" x-transition:leave-start="translate-x-0" x-transition:leave-end="-translate-x-full">
             <!--
      Close button, show/hide based on off-canvas menu state.
 
@@ -24,7 +24,7 @@
       To: "opacity-0"
     -->
             <div class="absolute top-0 flex justify-center w-16 pt-5 left-full">
-                <button type="button" class="-m-2.5 p-2.5">
+                <button @click="sidebarOpen = false" type="button" class="text-gray-600 hover:text-gray-800">
                     <span class="sr-only">Close sidebar</span>
                     <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
