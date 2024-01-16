@@ -1,5 +1,5 @@
 <x-layout>
-    <x-slot name="header">
+    {{-- <x-slot name="header">
         <div class="flex items-center justify-between">
             <h2 class="text-xl font-semibold leading-tight text-gray-800">
                 Notes
@@ -10,9 +10,9 @@
                 </x-button>
             </div>
         </div>
-    </x-slot>
+    </x-slot> --}}
     <x-container>
-        <div class="py-4 mx-auto">
+        <div>
             @foreach ($notes as $note)
                 <div class="mb-4 overflow-hidden bg-white shadow sm:rounded-md">
                     <ul role="list" class="divide-y divide-gray-200">

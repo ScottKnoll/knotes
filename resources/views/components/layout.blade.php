@@ -1,6 +1,10 @@
+@php
+    $notebooks = \App\Models\Notebook::all();
+@endphp
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<html class="h-full bg-white">
+<html class="h-full bg-gray-50">
 
 
 <head>
@@ -14,14 +18,13 @@
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 
-<body class="...">
-    <div x-data="{ sidebarOpen: false, dropdownOpen: false }">
-
-        <x-sidebar />
-        <x-sidebar-mobile />
+<body class="h-full">
+    <div x-data @openSidebar="sidebarOpen = true" @closeSidebar="sidebarOpen = false">
+        <x-sidebar :notebooks="$notebooks" />
+        <x-sidebar-mobile :notebooks="$notebooks" />
         <x-search-header />
         <div class="lg:pl-72">
             <main class="py-10">
