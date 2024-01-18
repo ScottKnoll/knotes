@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-layout>
     <x-slot name="header">
         <h2 class="text-xl font-semibold leading-tight text-gray-800">
             Create Notebook
@@ -28,4 +28,4 @@
                 </div>
             </form>
     </x-container>
-</x-app-layout>
+</x-layout>

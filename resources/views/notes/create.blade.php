@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-layout>
     <x-slot name="header">
         <div class="flex items-center justify-between">
             <h2 class="leading-tight text-gray-600">
@@ -25,4 +25,4 @@
             </form>
         </div>
     </x-container>
-</x-app-layout>
+</x-layout>

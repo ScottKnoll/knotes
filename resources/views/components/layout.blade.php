@@ -4,7 +4,7 @@
 
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<html class="h-full bg-gray-50">
+<html class="h-full bg-white">
 
 
 <head>
