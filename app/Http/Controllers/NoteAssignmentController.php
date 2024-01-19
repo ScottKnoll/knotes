@@ -6,13 +6,17 @@ use App\Models\Note;
 
 class NoteAssignmentController extends Controller
 {
-    public function store(Note $note)
+    public function store()
     {
         $validated = request()->validate([
-            'notebook_id' => 'required|exists:notebooks,id'
+            'notebook_id' => 'required|exists:notebooks,id',
+            'note_id' => 'required|exists:notes,id',
         ]);
 
-        return $notebook = auth()->user()->notebooks()->findOrFail($validated['notebook_id']);
+        $notebook = auth()->user()->notebooks()->findOrFail($validated['notebook_id']);
+
+        $note = Note::findOrFail($validated['note_id']);
+
         $notebook->notes()->attach($note);
 
         session()->flash('alert_message', 'Note added to notebook successfully.');
@@ -20,8 +24,10 @@ class NoteAssignmentController extends Controller
         return back();
     }
 
-    public function destroy(Note $note, $notebookId)
+    public function destroy(Note $note)
     {
+        $notebookId = request()->input('notebook_id');
+
         $notebook = auth()->user()->notebooks()->findOrFail($notebookId);
         $notebook->notes()->detach($note);
 

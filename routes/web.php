@@ -27,8 +27,8 @@ Route::get('/dashboard', function () {
 
 Route::resource('notes', NoteController::class);
 Route::resource('notebooks', NotebookController::class);
-Route::post('/notes/{note}/add-to-notebook', [NoteAssignmentController::class, 'store']);
-Route::delete('/notes/{note}/remove-from-notebook/{notebookId}', [NoteAssignmentController::class, 'destroy']);
+Route::resource('assigned-notes', NoteAssignmentController::class)->only(['store', 'destroy']);
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

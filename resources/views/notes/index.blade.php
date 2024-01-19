@@ -8,7 +8,7 @@
             <x-button href="notes/create" type="button" styles="indigo">Create</x-button>
         </div>
     </div>
-    <div class="flow-root mt-8">
+    <div class="mt-8">
         <ul role="list" class="divide-y divide-gray-100">
             @foreach ($notes as $note)
                 <li class="relative flex justify-between px-4 py-5 gap-x-6 hover:bg-gray-50">

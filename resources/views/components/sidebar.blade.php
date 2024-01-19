@@ -8,27 +8,27 @@
             <ul role="list" class="flex flex-col flex-1 gap-y-7">
                 <li>
                     <ul role="list" class="-mx-2 space-y-1">
-                        <li>
+                        {{-- <li>
                             <!-- Current: "bg-gray-800 text-white", Default: "text-gray-400 hover:text-white hover:bg-gray-800" -->
                             <a href="#" class="flex p-2 text-sm font-semibold leading-6 text-white bg-gray-800 rounded-md group gap-x-3">
                                 <x-svg.home class="w-6 h-6 shrink-0" />
                                 Home
                             </a>
-                        </li>
+                        </li> --}}
                         <li>
-                            <a href="/notes" class="flex p-2 text-sm font-semibold leading-6 text-gray-400 rounded-md group gap-x-3 hover:bg-gray-800 hover:text-white">
+                            <a href="/notes" class="{{ request()->is('notes', 'notes/*') ? 'bg-gray-800 text-white' : 'text-gray-400 hover:text-white hover:bg-gray-800' }} group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6">
                                 <x-svg.document-text class="w-6 h-6 shrink-0" />
                                 Notes
                             </a>
                         </li>
                         <li>
-                            <a href="/notebooks" class="flex p-2 text-sm font-semibold leading-6 text-gray-400 rounded-md group gap-x-3 hover:bg-gray-800 hover:text-white">
+                            <a href="/notebooks" class="{{ request()->is('notebooks', 'notebooks/*') ? 'bg-gray-800 text-white' : 'text-gray-400 hover:text-white hover:bg-gray-800' }} group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6">
                                 <x-svg.book-open class="w-6 h-6 shrink-0" />
                                 Notebooks
                             </a>
                         </li>
                         <li>
-                            <a href="/tasks" class="flex p-2 text-sm font-semibold leading-6 text-gray-400 rounded-md group gap-x-3 hover:bg-gray-800 hover:text-white">
+                            <a href="/tasks" class="{{ request()->is('tasks', 'tasks/*') ? 'bg-gray-800 text-white' : 'text-gray-400 hover:text-white hover:bg-gray-800' }} group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6">
                                 <x-svg.check-circle class="w-6 h-6 shrink-0" />
                                 Tasks
                             </a>

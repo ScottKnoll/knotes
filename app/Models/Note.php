@@ -25,7 +25,7 @@ class Note extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function notebook()
+    public function notebooks()
     {
         return $this->belongsToMany(Notebook::class);
     }

@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-layout>
     <div class="flex items-center justify-between">
         <h2 class="text-xl font-semibold leading-tight text-gray-800">
             Notes
@@ -21,10 +21,14 @@
             </div>
         </div>
     </div>
-    <div class="px-6 mx-auto max-w-7xl lg:px-8">
+    @if (session('alert_message'))
+        <x-alert message="{{ session('alert_message') }}"></x-alert>
+    @endif
+    <div class="mt-8">
         <div class="max-w-md mb-4">
-            <form action="/notes{{ $note->id }}}/add-to-notebook" method="post">
+            <form action="/assigned-notes" method="post">
                 @csrf
+                <input type="hidden" name="note_id" value="{{ $note->id }}">
                 <div>
                     <x-label for="notebook_id">Add to Notebook:</x-label>
                     <div class="flex items-center justify-between mt-1 gap-x-2">
@@ -53,4 +57,4 @@
             </div>
         </div>
     </div>
-</x-app-layout>
+</x-layout>
