@@ -1,7 +1,7 @@
 <x-layout>
     <div class="flex items-center justify-between">
         <h2 class="text-xl font-semibold leading-tight text-gray-800">
-            Notes
+            View Note
         </h2>
         <div class="relative inline-block text-left" x-data="{ open: false }">
             <div>
@@ -25,33 +25,33 @@
         <x-alert message="{{ session('alert_message') }}"></x-alert>
     @endif
     <div class="mt-8">
-        <div class="max-w-md mb-4">
-            <form action="/assigned-notes" method="post">
-                @csrf
-                <input type="hidden" name="note_id" value="{{ $note->id }}">
-                <div>
-                    <x-label for="notebook_id">Add to Notebook:</x-label>
-                    <div class="flex items-center justify-between mt-1 gap-x-2">
-                        <x-select id="notebook_id" name="notebook_id">
-                            @foreach ($notebooks as $notebook)
-                                <option value="{{ $notebook->id }}">{{ $notebook->name }}</option>
-                            @endforeach
-                        </x-select>
-                        <x-button type="submit">Add</x-button>
+        @if ($notebooks->isNotEmpty())
+            <div class="max-w-md mb-4">
+                <form action="/assigned-notes" method="post">
+                    @csrf
+                    <input type="hidden" name="note_id" value="{{ $note->id }}">
+                    <div>
+                        <x-label for="notebook_id">Add to Notebook:</x-label>
+                        <div class="flex items-center justify-between mt-1 gap-x-2">
+                            <x-select id="notebook_id" name="notebook_id">
+                                @foreach ($notebooks as $notebook)
+                                    <option value="{{ $notebook->id }}">{{ $notebook->name }}</option>
+                                @endforeach
+                            </x-select>
+                            <x-button type="submit">Add</x-button>
+                        </div>
                     </div>
-                </div>
-            </form>
-        </div>
+                </form>
+            </div>
+        @endif
         <div class="flex flex-col items-start justify-between">
             <div class="flex items-center text-xs gap-x-4">
                 <time datetime="2020-03-16" class="text-gray-500">{{ $note->created_at->format('M d, Y') }}</time>
             </div>
             <div class="relative group">
-                <h3 class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
-                    <a href="#">
-                        <span class="absolute inset-0"></span>
-                        {{ $note->title }}
-                    </a>
+                <h3 class="mt-3 text-lg font-semibold leading-6 text-gray-900">
+                    <span class="absolute inset-0"></span>
+                    {{ $note->title }}
                 </h3>
                 <p class="mt-5 text-sm leading-6 text-gray-600 line-clamp-3">{{ $note->message }}</p>
             </div>

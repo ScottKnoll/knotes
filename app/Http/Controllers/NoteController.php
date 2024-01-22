@@ -9,7 +9,7 @@ class NoteController extends Controller
 {
     public function index()
     {
-        $notes = Note::paginate(10);
+        $notes = Note::with('notebooks')->paginate(10);
 
         return view('notes.index', [
             'notes' => $notes,
