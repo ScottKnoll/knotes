@@ -16,7 +16,7 @@
                         <tr>
                             <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">
                                 <a href="#" class="inline-flex ml-2 group">
-                                    Book
+                                    Notebook
                                     <!-- Active: "bg-gray-200 text-gray-900 group-hover:bg-gray-300", Not Active: "invisible text-gray-400 group-hover:visible group-focus:visible" -->
                                     <span class="flex-none invisible ml-2 text-gray-400 rounded group-hover:visible group-focus:visible">
                                         <svg class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -54,9 +54,15 @@
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
                         @foreach ($notebooks as $notebook)
-                            <tr>
-                                <td class="py-4 pl-4 pr-3 text-sm font-medium text-gray-900 whitespace-nowrap sm:pl-2">
-                                    {{ $notebook->name }}</td>
+                            <tr x-data="{ open: false }">
+                                <td class="py-4 pl-4 pr-3 text-sm font-medium text-gray-900 whitespace-nowrap sm:pl-6">
+                                    <div class="flex items-center justify-between">
+                                        <button @click="open = !open" class="text-gray-900 focus:text-gray-600 focus:outline-none">
+                                            <x-svg.chevron-down :class="{ 'rotate-180': open }" class="w-4 h-4 transition-transform" />
+                                        </button>
+                                        {{ $notebook->name }}
+                                    </div>
+                                </td>
                                 <td class="px-3 py-4 text-sm text-gray-500 whitespace-nowrap">
                                     {{ $notebook->user->name }}
                                 </td>
@@ -67,6 +73,15 @@
                                     <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit<span class="sr-only">, Lindsay Walton</span></a>
                                 </td>
                             </tr>
+                            <template x-if="open">
+                                @foreach ($notebook->notes as $note)
+                                    <tr class="bg-gray-100">
+                                        <td colspan="4" class="px-6 py-2 text-sm text-gray-500 whitespace-nowrap">
+                                            {{ $note->title }}
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </template>
                         @endforeach
                     </tbody>
                 </table>

@@ -9,7 +9,7 @@ class NotebookController extends Controller
 {
     public function index()
     {
-        $notebooks = Notebook::all();
+        $notebooks = Notebook::with('notes')->get();
 
         return view('notebooks.index', [
             'notebooks' => $notebooks,
