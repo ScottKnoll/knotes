@@ -36,11 +36,11 @@ class NotebookController extends Controller
 
     public function show(Notebook $notebook)
     {
-        $note = Note::with('notebooks')->get();
+        $notes = $notebook->notes()->get();
 
-        return view('notes.show', [
-            'note' => $note,
+        return view('notebooks.show', [
             'notebook' => $notebook,
+            'notes' => $notes,
         ]);
     }
 

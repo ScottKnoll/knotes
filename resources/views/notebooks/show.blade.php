@@ -1,11 +1,7 @@
 <x-layout>
     <div class="md:flex md:items-center md:justify-between">
         <div class="flex-1 min-w-0">
-            <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">Notebooks</h2>
-        </div>
-        <div class="flex mt-4 md:ml-4 md:mt-0">
-            {{-- <button type="button" class="inline-flex items-center px-3 py-2 text-sm font-semibold text-gray-900 bg-white rounded-md shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">Edit</button> --}}
-            <x-button href="notebooks/create" type="button" styles="indigo" class="rounded-md">Create</x-button>
+            <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">{{ $notebook->name }}</h2>
         </div>
     </div>
     <div class="flow-root mt-8">
@@ -16,7 +12,7 @@
                         <tr>
                             <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">
                                 <a href="#" class="inline-flex ml-2 group">
-                                    Book
+                                    Note
                                     <!-- Active: "bg-gray-200 text-gray-900 group-hover:bg-gray-300", Not Active: "invisible text-gray-400 group-hover:visible group-focus:visible" -->
                                     <span class="flex-none invisible ml-2 text-gray-400 rounded group-hover:visible group-focus:visible">
                                         <svg class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -38,7 +34,7 @@
                             </th>
                             <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
                                 <a href="#" class="inline-flex group">
-                                    Last Updated
+                                    Updated
                                     <!-- Active: "bg-gray-200 text-gray-900 group-hover:bg-gray-300", Not Active: "invisible text-gray-400 group-hover:visible group-focus:visible" -->
                                     <span class="flex-none invisible ml-2 text-gray-400 rounded group-hover:visible group-focus:visible">
                                         <svg class="flex-none invisible w-5 h-5 ml-2 text-gray-400 rounded group-hover:visible group-focus:visible" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -53,16 +49,16 @@
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
-                        @foreach ($notebooks as $notebook)
+                        @foreach ($notes as $note)
                             <tr>
                                 <td class="py-4 pl-4 pr-3 text-sm font-medium text-gray-900 whitespace-nowrap sm:pl-2">
-                                    <a href="/notebooks/{{ $notebook->id }}" class="text-indigo-600 hover:text-indigo-700 hover:underline">{{ $notebook->name }}</a>
+                                    <a href="/notes/{{ $note->id }}/edit" class="text-indigo-600 hover:text-indigo-700 hover:underline">{{ $note->title }}</a>
                                 </td>
                                 <td class="px-3 py-4 text-sm text-gray-500 whitespace-nowrap">
-                                    {{ $notebook->created_at->format('M d, Y') }}
+                                    {{ $note->created_at->format('M d, Y') }}
                                 </td>
                                 <td class="px-3 py-4 text-sm text-gray-500 whitespace-nowrap">
-                                    {{ $notebook->updated_at->format('M d, Y') }}
+                                    {{ $note->updated_at->format('M d, Y') }}
                                 </td>
                                 <td class="relative py-4 pl-3 pr-4 text-sm text-right whitespace-nowrap sm:pr-2">
                                     <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit<span class="sr-only">, Lindsay Walton</span></a>
