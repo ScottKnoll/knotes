@@ -37,20 +37,6 @@ class NoteController extends Controller
         return redirect('/notes');
     }
 
-    public function show(Note $note)
-    {
-        $note->load('notebooks');
-
-        $assignedNotebookIds = $note->notebooks->pluck('id');
-
-        $notebooks = auth()->user()->notebooks()->whereNotIn('id', $assignedNotebookIds)->get();
-
-        return view('notes.show', [
-            'note' => $note,
-            'notebooks' => $notebooks,
-        ]);
-    }
-
     public function edit(Note $note)
     {
         $note->load('notebooks');

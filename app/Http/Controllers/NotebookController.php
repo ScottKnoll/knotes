@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Note;
 use App\Models\Notebook;
-use Illuminate\Http\Request;
 
 class NotebookController extends Controller
 {
@@ -32,5 +32,22 @@ class NotebookController extends Controller
         Notebook::create($validated);
 
         return redirect('/notebooks');
+    }
+
+    public function show(Notebook $notebook)
+    {
+        $note = Note::with('notebooks')->get();
+
+        return view('notes.show', [
+            'note' => $note,
+            'notebook' => $notebook,
+        ]);
+    }
+
+    public function edit(Notebook $notebook)
+    {
+        return view('notebooks.edit', [
+            'notebook' => $notebook,
+        ]);
     }
 }

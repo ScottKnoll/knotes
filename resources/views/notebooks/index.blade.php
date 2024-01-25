@@ -5,7 +5,7 @@
         </div>
         <div class="flex mt-4 md:ml-4 md:mt-0">
             {{-- <button type="button" class="inline-flex items-center px-3 py-2 text-sm font-semibold text-gray-900 bg-white rounded-md shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">Edit</button> --}}
-            <x-button href="notebooks/create" type="button" styles="indigo">Create</x-button>
+            <x-button href="notebooks/create" type="button" styles="indigo" class="rounded-md">Create</x-button>
         </div>
     </div>
     <div class="flow-root mt-8">
@@ -16,7 +16,7 @@
                         <tr>
                             <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">
                                 <a href="#" class="inline-flex ml-2 group">
-                                    Notebook
+                                    Book
                                     <!-- Active: "bg-gray-200 text-gray-900 group-hover:bg-gray-300", Not Active: "invisible text-gray-400 group-hover:visible group-focus:visible" -->
                                     <span class="flex-none invisible ml-2 text-gray-400 rounded group-hover:visible group-focus:visible">
                                         <svg class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -54,16 +54,9 @@
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
                         @foreach ($notebooks as $notebook)
-                            <tr x-data="{ open: false }">
-                                <td class="py-4 pl-4 pr-3 text-sm font-medium text-gray-900 whitespace-nowrap sm:pl-6">
-                                    <div class="flex items-center justify-between">
-                                        <button @click="open = !open" class="text-gray-900 focus:text-gray-600 focus:outline-none">
-                                            <svg :class="{ 'rotate-180': open }" class="w-4 h-4 transition-transform" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                            </svg>
-                                        </button>
-                                        {{ $notebook->name }}
-                                    </div>
+                            <tr>
+                                <td class="py-4 pl-4 pr-3 text-sm font-medium text-gray-900 whitespace-nowrap sm:pl-2">
+                                    <a href="/notebooks/{{ $notebook->id }}/edit" class="text-indigo-600 hover:text-indigo-700 hover:underline">{{ $notebook->name }}</a>
                                 </td>
                                 <td class="px-3 py-4 text-sm text-gray-500 whitespace-nowrap">
                                     {{ $notebook->user->name }}
@@ -75,15 +68,6 @@
                                     <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit<span class="sr-only">, Lindsay Walton</span></a>
                                 </td>
                             </tr>
-                            <template x-if="open">
-                                @foreach ($notebook->notes as $note)
-                                    <tr class="bg-gray-100" x-show="open" style="display: none;">
-                                        <td colspan="4" class="px-6 py-2 text-sm text-gray-500 whitespace-nowrap">
-                                            {{ $note->title }}
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </template>
                         @endforeach
                     </tbody>
                 </table>
