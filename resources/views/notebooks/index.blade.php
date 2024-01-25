@@ -58,7 +58,9 @@
                                 <td class="py-4 pl-4 pr-3 text-sm font-medium text-gray-900 whitespace-nowrap sm:pl-6">
                                     <div class="flex items-center justify-between">
                                         <button @click="open = !open" class="text-gray-900 focus:text-gray-600 focus:outline-none">
-                                            <x-svg.chevron-down :class="{ 'rotate-180': open }" class="w-4 h-4 transition-transform" />
+                                            <svg :class="{ 'rotate-180': open }" class="w-4 h-4 transition-transform" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                            </svg>
                                         </button>
                                         {{ $notebook->name }}
                                     </div>
@@ -75,7 +77,7 @@
                             </tr>
                             <template x-if="open">
                                 @foreach ($notebook->notes as $note)
-                                    <tr class="bg-gray-100">
+                                    <tr class="bg-gray-100" x-show="open" style="display: none;">
                                         <td colspan="4" class="px-6 py-2 text-sm text-gray-500 whitespace-nowrap">
                                             {{ $note->title }}
                                         </td>

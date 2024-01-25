@@ -53,8 +53,15 @@ class NoteController extends Controller
 
     public function edit(Note $note)
     {
+        $note->load('notebooks');
+
+        $assignedNotebookIds = $note->notebooks->pluck('id');
+
+        $notebooks = auth()->user()->notebooks()->whereNotIn('id', $assignedNotebookIds)->get();
+
         return view('notes.edit', [
             'note' => $note,
+            'notebooks' => $notebooks,
         ]);
     }
 

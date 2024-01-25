@@ -35,7 +35,7 @@
             $btnClasses .= ' rounded-lg px-6 py-4 text-lg';
             break;
         default:
-            $btnClasses .= ' rounded-md px-3 py-2 text-sm';
+            $btnClasses .= ' px-3 py-2 text-sm';
             break;
     }
 @endphp

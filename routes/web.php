@@ -25,7 +25,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::resource('notes', NoteController::class);
+Route::resource('notes', NoteController::class)->except(['show']);
 Route::resource('notebooks', NotebookController::class);
 Route::resource('assigned-notes', NoteAssignmentController::class)->only(['store', 'destroy']);
 
