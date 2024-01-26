@@ -18,9 +18,9 @@
                                 <option value="{{ $notebook->id }}">{{ $notebook->name }}</option>
                             @endforeach
                         </x-select>
-                        <x-button type="submit" class="-ml-px h-10 w-[86px] justify-center rounded-r-md">
+                        <button type="submit" class="-ml-px inline-flex h-10 w-[86px] items-center justify-center rounded-r-md border border-gray-200 bg-white px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:border-gray-800 dark:bg-black dark:text-gray-300 dark:ring-offset-black dark:hover:bg-gray-900">
                             Save
-                        </x-button>
+                        </button>
                     </div>
                 </form>
             @endif
@@ -43,13 +43,13 @@
             @csrf
             @method('patch')
             <div class="pb-2 border-b border-gray-200">
-                <x-input type="text" name="title" value="{{ $note->title }}" class="!text-xl !font-bold" />
+                <x-input type="text" name="title" class="!text-xl !font-bold" :value="$note->title" />
             </div>
             <div class="mt-2">
                 <textarea rows="29" name="message" id="message" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">{{ $note->message }}</textarea>
                 <div class="flex justify-end mt-4 gap-x-4">
-                    <x-button href="/notes" class="rounded-md">Cancel</x-button>
-                    <x-button type="submit" styles="indigo" class="rounded-md">Update</x-button>
+                    <x-button href="/notes">Cancel</x-button>
+                    <x-button type="submit" styles="indigo">Update</x-button>
                 </div>
         </form>
     </div>

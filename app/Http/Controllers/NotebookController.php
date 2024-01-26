@@ -50,4 +50,15 @@ class NotebookController extends Controller
             'notebook' => $notebook,
         ]);
     }
+
+    public function update(Notebook $notebook)
+    {
+        $validated = request()->validate([
+            'name' => 'nullable|string|max:255',
+        ]);
+
+        $notebook->update($validated);
+
+        return redirect('/notebooks/' . $notebook->id);
+    }
 }

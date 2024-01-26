@@ -34,8 +34,11 @@
         case 'lg':
             $btnClasses .= ' rounded-lg px-6 py-4 text-lg';
             break;
-        default:
+        case 'drop':
             $btnClasses .= ' px-3 py-2 text-sm';
+            break;
+        default:
+            $btnClasses .= ' rounded-md px-3 py-2 text-sm';
             break;
     }
 @endphp

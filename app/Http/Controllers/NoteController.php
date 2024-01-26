@@ -64,7 +64,6 @@ class NoteController extends Controller
         return redirect('/notes/' . $note->id);
     }
 
-
     public function destroy(Note $note)
     {
         $note->delete();
