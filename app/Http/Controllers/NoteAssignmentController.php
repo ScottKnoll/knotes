@@ -24,12 +24,15 @@ class NoteAssignmentController extends Controller
         return back();
     }
 
-    public function destroy(Note $note)
+    public function destroy($noteId)
     {
-        $notebookId = request()->input('notebook_id');
+        $noteId = request('note_id');
+        $notebookId = request('notebook_id');
 
         $notebook = auth()->user()->notebooks()->findOrFail($notebookId);
-        $notebook->notes()->detach($note);
+        $note = Note::findOrFail($noteId);
+
+        $notebook->notes()->detach($noteId);
 
         session()->flash('alert_message', 'Note removed from notebook successfully.');
 
