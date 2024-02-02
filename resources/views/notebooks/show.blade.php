@@ -1,11 +1,14 @@
 <x-layout>
+    @if (session('alert_message'))
+        <x-alert message="{{ session('alert_message') }}" class="mb-4"></x-alert>
+    @endif
     <div class="md:flex md:items-center md:justify-between">
         <div class="min-w-0 flex-1">
             <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">{{ $notebook->name }}</h2>
         </div>
     </div>
     <div class="mt-8 flow-root">
-        <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+        <div class="-mx-4 -my-2 sm:-mx-6 lg:-mx-8">
             <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
                 <table class="min-w-full divide-y divide-gray-300">
                     <thead>
@@ -60,7 +63,7 @@
                                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                                     {{ $note->updated_at->format('M d, Y') }}
                                 </td>
-                                <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm sm:pr-2">
+                                <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-left text-sm sm:pr-2">
                                     <div x-data="{ open: false }" class="relative flex-none">
                                         <button @click="open = !open" type="button" class="-m-2.5 block p-2.5 text-gray-500 hover:text-gray-900" id="options-menu-0-button">
                                             <x-svg.ellipsis-vertical class="h-6 w-6 dark:text-gray-300" />

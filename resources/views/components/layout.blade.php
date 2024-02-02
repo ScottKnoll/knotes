@@ -18,6 +18,7 @@
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <x-head.tinymce-config />
 </head>
 
 <body class="h-full">
@@ -28,6 +29,7 @@
         <div class="lg:pl-72">
             <main class="py-10">
                 <div class="px-4 sm:px-6 lg:px-8">
+                    {{-- <x-forms.tinymce-editor /> --}}
                     {{ $slot }}
                 </div>
             </main>
