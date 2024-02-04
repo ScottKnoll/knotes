@@ -6,15 +6,15 @@
     </x-slot>
 
     <x-container>
-        <div class="py-4 mx-auto">
+        <div class="mx-auto py-4">
             <x-validation-errors />
             <form action="/notebooks/{{ $notebook->id }}" method="post">
                 @csrf
                 @method('patch')
-                <div class="grid grid-cols-1 mt-4 gap-x-6 gap-y-4">
+                <div class="mt-4 grid grid-cols-1 gap-x-6 gap-y-4">
                     <div>
                         <x-label for="name" class="mb-1">Name</x-label>
-                        <x-input type="text" name="name" :value="$notebook->name" />
+                        <x-input type="text" name="name" :value="old('name', $notebook->name)" />
                     </div>
                     <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
                 </div>

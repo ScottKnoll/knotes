@@ -51,7 +51,7 @@ class NoteController extends Controller
         ]);
     }
 
-    public function update(Request $request, Note $note)
+    public function update(Note $note)
     {
         $validated = request()->validate([
             'date' => 'nullable',
