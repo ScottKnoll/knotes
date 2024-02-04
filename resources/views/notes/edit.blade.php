@@ -43,7 +43,7 @@
         <x-validation-errors />
         <form action="/notes/{{ $note->id }}" method="post">
             @csrf
-            @method('patch')
+            @method('put')
             <div class="border-b border-gray-200 pb-2">
                 <x-input type="text" name="title" class="!text-xl !font-bold" :value="$note->title" />
             </div>

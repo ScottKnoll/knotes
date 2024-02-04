@@ -1,5 +1,3 @@
 <div>
-    <form method="post">
-        <textarea id="myeditorinstance">{{ $slot }}</textarea>
-    </form>
+    <textarea id="myeditorinstance" name="message">{{ $slot }}</textarea>
 </div>
