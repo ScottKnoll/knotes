@@ -34,7 +34,7 @@ class NoteController extends Controller
 
         Note::create($validated);
 
-        return redirect('/notes');
+        return redirect()->route('notes.index');
     }
 
     public function edit(Note $note)
@@ -54,20 +54,19 @@ class NoteController extends Controller
     public function update(Note $note)
     {
         $validated = request()->validate([
-            'date' => 'nullable',
-            'title' => 'nullable',
+            'title' => 'required|max:255',
             'message' => 'required',
         ]);
 
         $note->update($validated);
 
-        return redirect('/notes/' . $note->id);
+        return redirect()->route('notes.index');
     }
 
     public function destroy(Note $note)
     {
         $note->delete();
 
-        return redirect('/notes');
+        return redirect()->route('notes.index');
     }
 }

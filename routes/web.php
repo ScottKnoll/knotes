@@ -1,9 +1,9 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\NoteController;
 use App\Http\Controllers\NoteAssignmentController;
 use App\Http\Controllers\NotebookController;
+use App\Http\Controllers\NoteController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,7 +28,6 @@ Route::get('/dashboard', function () {
 Route::resource('notes', NoteController::class)->except(['show']);
 Route::resource('notebooks', NotebookController::class);
 Route::resource('assigned-notes', NoteAssignmentController::class)->only(['store', 'destroy']);
-
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

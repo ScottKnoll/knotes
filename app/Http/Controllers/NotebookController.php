@@ -31,7 +31,7 @@ class NotebookController extends Controller
 
         Notebook::create($validated);
 
-        return redirect('/notebooks');
+        return redirect()->route('notebooks.index');
     }
 
     public function show(Notebook $notebook)
@@ -59,6 +59,6 @@ class NotebookController extends Controller
 
         $notebook->update($validated);
 
-        return redirect('/notebooks/' . $notebook->id);
+        return redirect()->route('notebooks.show', ['notebook' => $notebook->id]);
     }
 }
