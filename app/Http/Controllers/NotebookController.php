@@ -9,12 +9,7 @@ class NotebookController extends Controller
 {
     public function index()
     {
-        $sortBy = request('sort_by', 'created_at');
-        $sortDirection = request('sort_direction', 'desc');
-
-        $notebooks = Notebook::with('notes')
-            ->orderBy($sortBy, $sortDirection)
-            ->get();
+        $notebooks = Notebook::with('notes')->get();
 
         return view('notebooks.index', [
             'notebooks' => $notebooks,
