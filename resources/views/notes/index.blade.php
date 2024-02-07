@@ -20,9 +20,9 @@
                                     {{ $note->title }}
                                 </a>
                             </p>
-                            <p class="mt-1 flex text-xs leading-5 text-gray-500">
-                                {{ $note->message }}
-                            </p>
+                            <div class="note-content mt-1 text-xs leading-5 text-gray-500">
+                                {!! $note->message !!}
+                            </div>
                         </div>
                     </div>
                     <div class="flex shrink-0 items-center gap-x-4">

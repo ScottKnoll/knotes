@@ -24,8 +24,8 @@
     <div x-data @openSidebar="sidebarOpen = true" @closeSidebar="sidebarOpen = false">
         <x-sidebar :notebooks="$notebooks" />
         <x-sidebar-mobile :notebooks="$notebooks" />
-        <x-search-header />
         <div class="lg:pl-72">
+            <x-search-header />
             <main class="py-10">
                 <div class="px-4 sm:px-6 lg:px-8">
                     {{ $slot }}
