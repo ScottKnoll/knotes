@@ -21,7 +21,7 @@
 </head>
 
 <body class="h-full">
-    <div x-data @openSidebar="sidebarOpen = true" @closeSidebar="sidebarOpen = false">
+    <div x-data="{ sidebarOpen: false }">
         <x-sidebar :notebooks="$notebooks" />
         <x-sidebar-mobile :notebooks="$notebooks" />
         <div class="lg:pl-72">
