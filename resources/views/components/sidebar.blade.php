@@ -58,7 +58,7 @@
                         @foreach ($notebooks as $notebook)
                             <li>
                                 <!-- Current: "bg-gray-800 text-white", Default: "text-gray-400 hover:text-white hover:bg-gray-800" -->
-                                <a href="#" class="group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-400 hover:bg-gray-800 hover:text-white">
+                                <a href="/notebooks/{{ $notebook->id }}" class="group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-400 hover:bg-gray-800 hover:text-white">
                                     <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-gray-700 bg-gray-800 text-[0.625rem] font-medium text-gray-400 group-hover:text-white"> {{ collect(explode(' ', $notebook->name))->map(function ($word) {return strtoupper(substr($word, 0, 1));})->join('') }}
                                     </span>
                                     <span class="truncate">{{ $notebook->name }}</span>
