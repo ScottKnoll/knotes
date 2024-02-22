@@ -1,21 +1,11 @@
 <?php
 
-use App\Http\Controllers\NoteAssignmentController;
-use App\Http\Controllers\NotebookController;
 use App\Http\Controllers\NoteController;
+use App\Http\Controllers\NotebookController;
+use App\Http\Controllers\NoteAssignmentController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
 
 Route::get('/', function () {
     return view('welcome');
@@ -28,6 +18,8 @@ Route::get('/dashboard', function () {
 Route::resource('notes', NoteController::class)->except(['show']);
 Route::resource('notebooks', NotebookController::class);
 Route::resource('assigned-notes', NoteAssignmentController::class)->only(['store', 'destroy']);
+Route::resource('tasks', TaskController::class)->only(['store', 'update', 'destroy']);
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
