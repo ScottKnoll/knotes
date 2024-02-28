@@ -17,7 +17,9 @@ Route::get('/dashboard', function () {
 
 Route::resource('notes', NoteController::class)->except(['show']);
 Route::resource('notebooks', NotebookController::class);
-Route::resource('assigned-notes', NoteAssignmentController::class)->only(['store', 'destroy']);
+Route::post('notebooks/{notebook}/notes/{note}/assign', [NoteAssignmentController::class, 'store']);
+Route::delete('notebooks/{notebook}/notes/{note}', [NoteAssignmentController::class, 'destroy']);
+
 Route::resource('tasks', TaskController::class)->only(['store', 'update', 'destroy']);
 
 

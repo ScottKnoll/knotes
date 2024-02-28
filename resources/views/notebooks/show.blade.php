@@ -72,11 +72,9 @@
                                             <a href="/notes/{{ $note->id }}/edit" class="block px-3 py-1 text-sm leading-6 text-gray-900 hover:bg-gray-50" role="menuitem" tabindex="-1" id="options-menu-0-item-1">
                                                 View
                                             </a>
-                                            <form method="post" action="/assigned-notes/{{ $note->id }}" id="remove-form-{{ $note->id }}">
+                                            <form method="post" action="/notebooks/{{ $notebook->id }}/notes/{{ $note->id }}" id="remove-form-{{ $note->id }}">
                                                 @csrf
                                                 @method('DELETE')
-                                                <input type="hidden" name="note_id" value="{{ $note->id }}">
-                                                <input type="hidden" name="notebook_id" value="{{ $notebook->id }}">
                                                 <a href="#" class="block px-3 py-1 text-sm leading-6 text-gray-900 hover:bg-gray-50" role="menuitem" tabindex="-1" id="options-menu-0-item-2" onclick="event.preventDefault(); if(confirm('Are you sure you want to remove {{ addslashes($note->title) }} from the feed?')) document.getElementById('remove-form-{{ $note->id }}').submit();">
                                                     Remove
                                                 </a>

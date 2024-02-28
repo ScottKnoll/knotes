@@ -4,7 +4,6 @@
             <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">Notebooks</h2>
         </div>
         <div class="mt-4 flex md:ml-4 md:mt-0">
-            {{-- <button type="button" class="inline-flex items-center px-3 py-2 text-sm font-semibold text-gray-900 bg-white rounded-md shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">Edit</button> --}}
             <x-button href="notebooks/create" type="button" styles="indigo" class="rounded-md">Create</x-button>
         </div>
     </div>

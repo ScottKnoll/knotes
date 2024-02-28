@@ -8,9 +8,8 @@
         </h2>
         <div class="flex items-center justify-between">
             @if ($notebooks->isNotEmpty())
-                <form action="/assigned-notes" method="post">
+                <form action="/notebooks/{{ $notebook->id }}/notes/{{ $note->id }}/assign" method="post">
                     @csrf
-                    <x-input type="hidden" name="note_id" :value="old('note_id', $note->id)" />
                     <x-label for="notebook_id" class="mb-1">Add to Notebook:</x-label>
                     <div class="mr-4 flex items-center">
                         <x-select class="h-10 rounded-none rounded-l-md border-r-0" id="notebook_id" name="notebook_id">

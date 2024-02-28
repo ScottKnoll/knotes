@@ -3,20 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Note;
+use App\Models\Notebook;
 
 class NoteAssignmentController extends Controller
 {
-    public function store()
+    public function store(Notebook $notebook, Note $note)
     {
-        $validated = request()->validate([
-            'notebook_id' => 'required|exists:notebooks,id',
-            'note_id' => 'required|exists:notes,id',
-        ]);
-
-        $notebook = auth()->user()->notebooks()->findOrFail($validated['notebook_id']);
-
-        $note = Note::findOrFail($validated['note_id']);
-
         $notebook->notes()->attach($note);
 
         session()->flash('alert_message', 'Note added to notebook successfully.');
@@ -24,15 +16,9 @@ class NoteAssignmentController extends Controller
         return back();
     }
 
-    public function destroy($noteId)
+    public function destroy(Notebook $notebook, Note $note)
     {
-        $noteId = request('note_id');
-        $notebookId = request('notebook_id');
-
-        $notebook = auth()->user()->notebooks()->findOrFail($notebookId);
-        $note = Note::findOrFail($noteId);
-
-        $notebook->notes()->detach($noteId);
+        $notebook->notes()->detach($note);
 
         session()->flash('alert_message', 'Note removed from notebook successfully.');
 
