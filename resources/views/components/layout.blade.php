@@ -20,18 +20,16 @@
     <x-head.tinymce-config />
 </head>
 
-<body class="h-full">
-    <div x-data="{ sidebarOpen: false }">
-        <x-sidebar :notebooks="$notebooks" />
-        <x-sidebar-mobile :notebooks="$notebooks" />
-        <div class="lg:pl-72">
-            <x-search-header />
-            <main class="py-10">
-                <div class="px-4 sm:px-6 lg:px-8">
-                    {{ $slot }}
-                </div>
-            </main>
-        </div>
+<body x-data="{ sidebarOpen: false }" class="h-full">
+    <x-sidebar :notebooks="$notebooks" />
+    <x-sidebar-mobile :notebooks="$notebooks" />
+    <div class="lg:pl-72">
+        <x-search-header />
+        <main class="py-10">
+            <div class="px-4 sm:px-6 lg:px-8">
+                {{ $slot }}
+            </div>
+        </main>
     </div>
 </body>
 
