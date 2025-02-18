@@ -8,32 +8,23 @@
         </h2>
         <div class="flex items-center justify-between">
             @if ($notebooks->isNotEmpty())
-                <form action="/notebooks/{{ $notebook->id }}/notes/{{ $note->id }}/assign" method="post">
+                <form action="/notes/{{ $note->id }}assign-notebook" method="post">
                     @csrf
                     <x-label for="notebook_id" class="mb-1">Add to Notebook:</x-label>
-                    <div class="mr-4 flex items-center">
-                        <x-select class="h-10 rounded-none rounded-l-md border-r-0" id="notebook_id" name="notebook_id">
+                    <div class="flex items-center mr-4">
+                        <x-select class="h-10 border-r-0 rounded-none rounded-l-md" id="notebook_id" name="notebook_id">
                             @foreach ($notebooks as $notebook)
-                                <option value="{{ $notebook->id }}" @selected(old('notebook_id', $note->notebook_id) == $notebook->id)>{{ $notebook->name }}</option>
+                                <option value="{{ $notebook->id }}" @selected(old('notebook_id', $note->notebook_id) == $notebook->id)>{{ $notebook->name }}
+                                </option>
                             @endforeach
                         </x-select>
-                        <button type="submit" class="-ml-px inline-flex h-10 w-[86px] items-center justify-center rounded-r-md border border-gray-200 bg-white px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:border-gray-800 dark:bg-black dark:text-gray-300 dark:ring-offset-black dark:hover:bg-gray-900">
+                        <button type="submit"
+                            class="-ml-px inline-flex h-10 w-[86px] items-center justify-center rounded-r-md border border-gray-200 bg-white px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:border-gray-800 dark:bg-black dark:text-gray-300 dark:ring-offset-black dark:hover:bg-gray-900">
                             Save
                         </button>
                     </div>
                 </form>
             @endif
-            <div class="relative inline-block text-left" x-data="{ open: false }">
-                <form action="/notes/{{ $note->id }}/delete" method="post">
-                    @csrf
-                    @method('DELETE')
-                    <div class="mt-7 flex justify-end">
-                        <x-button class="w-[72px] justify-center rounded-md text-red-600" renderAs="confirm" :message="'Are you sure you want to delete note' . '?'">
-                            Delete
-                        </x-button>
-                    </div>
-                </form>
-            </div>
         </div>
     </div>
     <div class="mt-8">
@@ -41,15 +32,27 @@
         <form action="/notes/{{ $note->id }}" method="post">
             @csrf
             @method('patch')
-            <div class="border-b border-gray-200 pb-2">
+            <div class="pb-2 border-b border-gray-200">
                 <x-input type="text" name="title" class="!text-xl !font-bold" :value="old('title', $note->title)" />
             </div>
             <div class="mt-2">
                 <x-forms.tinymce-editor>{{ old('message', $note->message) }}</x-forms.tinymce-editor>
             </div>
-            <div class="mt-4 flex justify-end gap-x-4">
-                <x-button href="/notes">Cancel</x-button>
-                <x-button type="submit" styles="indigo">Update</x-button>
+            <div class="flex items-center justify-between mt-4">
+                <div>
+                    <form action="/notes/{{ $note->id }}/delete" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <x-button class="w-[72px] justify-center rounded-md text-red-600"
+                            onclick="return confirm('Are you sure you want to delete this note: {{ $note->title }}?')">
+                            Delete
+                        </x-button>
+                    </form>
+                </div>
+                <div class="space-x-2">
+                    <x-button href="/notes">Cancel</x-button>
+                    <x-button type="submit" styles="indigo">Update</x-button>
+                </div>
             </div>
         </form>
     </div>

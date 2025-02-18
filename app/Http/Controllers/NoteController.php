@@ -8,7 +8,9 @@ class NoteController extends Controller
 {
     public function index()
     {
-        $notes = Note::paginate(10);
+        $notes = Note::query()
+            ->orderBy('updated_at', 'desc')
+            ->paginate(10);
 
         return view('notes.index', [
             'notes' => $notes,
@@ -23,7 +25,6 @@ class NoteController extends Controller
     public function store()
     {
         $validated = request()->validate([
-            'date' => 'nullable',
             'title' => 'nullable',
             'message' => 'required',
         ]);
@@ -33,7 +34,7 @@ class NoteController extends Controller
 
         Note::create($validated);
 
-        return redirect()->route('notes.index');
+        return redirect('/notes');
     }
 
     public function edit(Note $note)
@@ -59,13 +60,13 @@ class NoteController extends Controller
 
         $note->update($validated);
 
-        return redirect()->route('notes.index');
+        return redirect('notes');
     }
 
     public function destroy(Note $note)
     {
         $note->delete();
 
-        return redirect()->route('notes.index');
+        return redirect('notes');
     }
 }

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Note;
 use App\Models\Notebook;
 
-class NoteAssignmentController extends Controller
+class NotebookAssignmentController extends Controller
 {
     public function store(Notebook $notebook, Note $note)
     {

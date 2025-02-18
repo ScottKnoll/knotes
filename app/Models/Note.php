@@ -20,11 +20,6 @@ class Note extends Model
         'message',
     ];
 
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
-
     public function notebooks()
     {
         return $this->belongsToMany(Notebook::class);
@@ -33,5 +28,10 @@ class Note extends Model
     public function tasks()
     {
         return $this->hasMany(Task::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }
